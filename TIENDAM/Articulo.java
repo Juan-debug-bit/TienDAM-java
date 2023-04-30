@@ -37,6 +37,13 @@ public class Articulo {
         this.cantidad = cantidad;
     }
 
+    public void aumentar (int cantidad) {
+        
+    }
+
+    public void disminuir (int cantidad) {
+        
+    }
     public String toString() {
         return "Articulo [nombre= " + nombre + ", precio= " + precio + ", iva= " + iva + ", cantidad= " + cantidad + "]";
     }
