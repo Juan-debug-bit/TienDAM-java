@@ -38,11 +38,23 @@ public class Articulo {
     }
 
     public void aumentar (int cantidad) {
-        
+        for (int i = 0; i < Almacen.cantidad; i++) {
+            if ((i+1) == 1) {
+                cantidad = cantidad + cantidad;//Aqui tengo que solicitar la cantidad en TienDAM
+            }else{
+                System.out.println("No hay ningún articulo con ese número");
+            }
+        }
     }
 
     public void disminuir (int cantidad) {
-        
+        for (int i = 0; i < Almacen.cantidad; i++) {
+            if ((i+1) == 1) {
+                cantidad = cantidad - cantidad;//Aqui tengo que solicitar la cantidad en TienDAM
+            } else {
+                
+            }
+        }
     }
     public String toString() {
         return "Articulo [nombre= " + nombre + ", precio= " + precio + ", iva= " + iva + ", cantidad= " + cantidad + "]";

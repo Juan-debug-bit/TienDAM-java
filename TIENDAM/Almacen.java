@@ -3,7 +3,7 @@ package TIENDAM;
 public class Almacen {
     final int MaxArticulos = 100;
     Articulo[] articulos = new Articulo[MaxArticulos];
-    int cantidad = 0;
+    static int cantidad = 0;
 
     public boolean verArticulos() {
         // Bucle que recorre el array y lista los articulos
