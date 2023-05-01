@@ -1,11 +1,11 @@
 package TIENDAM;
 
 public class Almacen {
-    final int MaxArticulos = 100;
-    Articulo[] articulos = new Articulo[MaxArticulos];
+    final static int MaxArticulos = 100;
+    static Articulo[] articulos = new Articulo[MaxArticulos];
     static int cantidad = 0;
 
-    public boolean verArticulos() {
+    public static boolean verArticulos() {
         // Bucle que recorre el array y lista los articulos
         for (int i = 0; i < cantidad; i++) {
             System.out.println("Articulo nº " + (i + 1));
@@ -15,7 +15,7 @@ public class Almacen {
 
     }
 
-    public boolean buscar() {
+    public static boolean buscar() {
         for (int i = 0; i < cantidad; i++) {
             if ((i + 1) == 1) {
                 articulos[i].toString();
@@ -24,7 +24,7 @@ public class Almacen {
         return true;
     }
 
-    public boolean anyadirArticulo() {
+    public static boolean anyadirArticulo() {
         if (cantidad < MaxArticulos) {
             // Crear en la clase TienDAM el Scanner y llamarlo desde está clase
         }
@@ -32,7 +32,7 @@ public class Almacen {
 
     }
 
-    public boolean quitarArticulo(int cantidad) {
+    public static boolean quitarArticulo(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
             if ((i + 1) == 1) {
                 return true;
@@ -43,7 +43,7 @@ public class Almacen {
         return false;
     }
 
-    public boolean ModificarPrecio(int cantidad, int precio) {
+    public static boolean ModificarPrecio(int cantidad, int precio) {
         for (int i = 0; i < cantidad; i++) {
             if ((i+1) == 1) {
                 //Crear con Scanner una nueva variable para modificar el precio
@@ -53,11 +53,11 @@ public class Almacen {
         return false;
     }
 
-    public boolean recibir(int cantidad, int precio) {
+    public static boolean recibir(int cantidad, int precio) {
         return false;
     }
 
-    public boolean devolver(int cantidad, int precio) {
+    public static boolean devolver(int cantidad, int precio) {
         return false;
     }
 }
