@@ -3,6 +3,29 @@ package TIENDAM;
 import java.util.Scanner;
 
 public class TienDAM {
+    public static int buscar() {
+        Scanner tcl = new Scanner(System.in);
+        System.out.println("Escribe el número del Articulo");
+        int buscar = tcl.nextInt();
+        return buscar;
+    }
+
+    public static void NewArt() {
+        Scanner tcl = new Scanner(System.in);
+        System.out.println("Nuevo Articulo: ");
+        System.out.println();
+        System.out.println("Nombre del articulo: ");
+        String nombre = tcl.nextLine();
+        System.out.println("Precio del articulo: ");
+        double precio = tcl.nextDouble();
+        System.out.println("Tipo de IVA: ");
+        double iva = tcl.nextDouble();
+        System.out.println("Cantidad del articulo: ");
+        int cantidad = tcl.nextInt();
+
+        Almacen.articulos[cantidad] = new Articulo(nombre, precio, iva, cantidad);
+    }
+
     public static void main(String[] args) {
         Scanner tcl = new Scanner(System.in);
         boolean salir = false;
@@ -15,22 +38,23 @@ public class TienDAM {
             System.out.println();
             System.out.print("Seleccione una opcion: ");
             int opcion = tcl.nextInt();
-                switch (opcion) {
-                    case 1:
-                        
+            switch (opcion) {
+                case 1:
+
                     almacen(tcl);
                     break;
                 case 2:
                     pedido(tcl);
                     break;
                 case 3: // Salir
-                    salir = true; 
+                    salir = true;
                     break;
-                    default:
+                default:
                     System.out.println("Opcion invalida");
-                }
+            }
         }
     }
+
     public static void almacen(Scanner tcl) {
         boolean volver = false;
         while (!volver) {
@@ -47,24 +71,24 @@ public class TienDAM {
             System.out.println();
             System.out.print("Seleccione una opcion: ");
             int opcion = tcl.nextInt();
-                switch (opcion) {
-                    case 1:
+            switch (opcion) {
+                case 1:
                     Almacen.verArticulos();
                     break;
                 case 2:
-                    
+
                     Almacen.buscar();
                     break;
                 case 3:
-                    
+
                     Almacen.anyadirArticulo();
                     break;
                 case 4:
-                    
+
                     Almacen.quitarArticulo(opcion);
                     break;
                 case 5:
-                    
+
                     Almacen.ModificarPrecio(opcion, opcion);
                     break;
                 case 6:
@@ -76,11 +100,12 @@ public class TienDAM {
                 case 8:
                     volver = true;
                     break;
-                    default:
+                default:
                     System.out.println("Opcion invalida");
-                }
+            }
         }
     }
+
     public static void pedido(Scanner tcl) {
         boolean volver = false;
         while (!volver) {
@@ -94,28 +119,28 @@ public class TienDAM {
             System.out.println("6. Volver al menu principal");
             System.out.print("Seleccione una opción: ");
             int opcion = tcl.nextInt();
-                switch (opcion) {
-                    case 1:
-                        
-                        break;
-                    case 2:
+            switch (opcion) {
+                case 1:
 
-                        break;
-                    case 3:
+                    break;
+                case 2:
 
-                        break;
-                    case 4:
+                    break;
+                case 3:
 
-                        break;
-                    case 5:
+                    break;
+                case 4:
 
-                        break;
-                    case 6:
-                        volver = true;
-                        break;
-                    default:
-                        System.out.println("Opcion invalida");
-                }
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+                    volver = true;
+                    break;
+                default:
+                    System.out.println("Opcion invalida");
+            }
         }
     }
 }

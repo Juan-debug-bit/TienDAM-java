@@ -17,7 +17,7 @@ public class Almacen {
 
     public static boolean buscar() {
         for (int i = 0; i < cantidad; i++) {
-            if ((i + 1) == 1) {
+            if ((i + 1) == TienDAM.buscar()) {
                 articulos[i].toString();
             }
         }
@@ -26,15 +26,18 @@ public class Almacen {
 
     public static boolean anyadirArticulo() {
         if (cantidad < MaxArticulos) {
-            // Crear en la clase TienDAM el Scanner y llamarlo desde está clase
+            TienDAM.NewArt();
+            return true;
+        }else{
+            return false;
         }
-        return false;
+        
 
     }
 
     public static boolean quitarArticulo(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
-            if ((i + 1) == 1) {
+            if ((i + 1) == TienDAM.buscar()) {
                 return true;
             }
             cantidad--;
@@ -45,7 +48,7 @@ public class Almacen {
 
     public static boolean ModificarPrecio(int cantidad, int precio) {
         for (int i = 0; i < cantidad; i++) {
-            if ((i+1) == 1) {
+            if ((i+1) == TienDAM.buscar()) {
                 //Crear con Scanner una nueva variable para modificar el precio
                 //En TienDAM
             }
