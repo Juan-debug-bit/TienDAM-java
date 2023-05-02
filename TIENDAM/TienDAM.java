@@ -3,6 +3,7 @@ package TIENDAM;
 import java.util.Scanner;
 
 public class TienDAM {
+    static Almacen almacen = new Almacen();
     //Método que sirve para buscar el número que solicita el usuario. Será utilizado para facilitar
     //la funcionalidad del stock del almacen y a la hora de que nos hagan un pedido.
     public static int buscar() {
@@ -15,7 +16,7 @@ public class TienDAM {
     
     //Método para preguntar al usuario por los datos del nuevo articulo, que será utilizado en añadir articulos
     // de almacen.
-    public static void newArt() {
+    public void newArticulo() {
         Scanner tcl = new Scanner(System.in);
         System.out.println();
         System.out.println("Nuevo Articulo: ");
@@ -29,14 +30,12 @@ public class TienDAM {
         System.out.println("Cantidad del articulo: ");
         int cantidad = tcl.nextInt();
 
-        
+        almacen.anyadirArticulo(nombre, precio, iva, cantidad);
 
-        int indice = Almacen.getIndice();
-        //Guardamos en el array articulos la información dada por el user.
-        Almacen.articulos[Almacen.indice] = new Articulo(nombre, precio, iva, cantidad, indice);
+        
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         Scanner tcl = new Scanner(System.in);
         boolean salir = false;
         //Creamos bucle while para hacer el menu principal
@@ -70,7 +69,7 @@ public class TienDAM {
     }
 
     //Método almacen que funciona mediante un bucle while para mostrar y anotar por pantalla las opciones
-    public static void almacen(Scanner tcl) {
+    public void almacen(Scanner tcl) {
         boolean volver = false;
         while (!volver) {
             System.out.println("Menu de almacen");
@@ -90,31 +89,31 @@ public class TienDAM {
             switch (opcion) {
                 case 1:
                     //Método ver articulos, sirve para listar los articulos que hay en el almacen
-                    Almacen.verArticulos();
+                    almacen.verArticulos();
                     break;
                 case 2:
                     //Método buscar, sirve para buscar el articulo deseado
-                    Almacen.buscar();
+                    almacen.buscar();
                     break;
                 case 3:
                     //Método agregar, sirve para añadir un articulo
-                    Almacen.anyadirArticulo();
+                    newArticulo();
                     break;
                 case 4:
                     //Método quitar, sirve para quitar un articulo
-                    Almacen.quitarArticulo(opcion);
+                    almacen.quitarArticulo(opcion);
                     break;
                 case 5:
                     //Método modificar precio, sirve para cambiar el precio
-                    Almacen.ModificarPrecio(opcion, opcion);
+                    almacen.modificarPrecio(opcion, opcion);
                     break;
                 case 6:
                     //Método recibir
-                    Almacen.recibir(opcion, opcion);
+                    almacen.recibir(opcion, opcion);
                     break;
                 case 7:
                     //Método devolver
-                    Almacen.devolver(opcion, opcion);
+                    almacen.devolver(opcion, opcion);
                     break;
                 case 8:
                 //Se creo variable booleana para volver a atras al menu principal
@@ -126,7 +125,7 @@ public class TienDAM {
         }
     }
     //Método Pedido que funciona mediante un bucle while para mostrar y anotar por pantalla las opciones
-    public static void pedido(Scanner tcl) {
+    public void pedido(Scanner tcl) {
         boolean volver = false;
         while (!volver) {
             System.out.println("Menu de pedido");

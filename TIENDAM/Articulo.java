@@ -1,22 +1,19 @@
 package TIENDAM;
 
 public class Articulo {
-    String nombre;
-    double precio;
-    int cantidad;
+    Almacen almacen = new Almacen();
+    private String nombre;
+    private double precio;
+    private int cantidad;
 
     public enum tipoiva {
         General, Reducido, Superreducido
     }
 
-    public static tipoiva tipo;
-    private static double iva;
+    public tipoiva tipo;
+    private double iva;
 
-    public Articulo(int indice){
-        indice++;
-    }
-    public Articulo(String nombre, double precio, double iva, int cantidad, int indice) {
-        this(indice);
+    public Articulo(String nombre, double precio, double iva, int cantidad) {
         this.nombre = nombre;
         this.precio = precio;
         this.iva = iva;
@@ -40,7 +37,7 @@ public class Articulo {
     }
 
     public void setIva(double iva) {
-        Articulo.iva = iva;
+        this.iva = iva;
     }
 
     public int getCantidad() {
@@ -52,7 +49,7 @@ public class Articulo {
     }
 
     public void aumentar(int cantidad) {
-        for (int i = 0; i < Almacen.indice; i++) {
+        for (int i = 0; i < almacen.getIndice(); i++) {
             if ((i + 1) == TienDAM.buscar()) {
                 cantidad++;
             } else {
@@ -62,7 +59,7 @@ public class Articulo {
     }
 
     public void disminuir(int cantidad) {
-        for (int i = 0; i < Almacen.indice; i++) {
+        for (int i = 0; i < almacen.getIndice(); i++) {
             if ((i + 1) == TienDAM.buscar()) {
                 cantidad--;
             } else {
@@ -75,7 +72,7 @@ public class Articulo {
         return "Articulo [nombre= " + nombre + ", precio= " + precio + ", cantidad= " + cantidad + "]";
     }
 
-    public static void TipoIVA() {
+    public void tipoIVA() {
         String aux = "General";
         switch (tipo) {
             case Reducido:
