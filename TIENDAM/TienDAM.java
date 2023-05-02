@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class TienDAM {
     static Almacen almacen = new Almacen();
+
     //Método que sirve para buscar el número que solicita el usuario. Será utilizado para facilitar
     //la funcionalidad del stock del almacen y a la hora de que nos hagan un pedido.
     public static int buscar() {
