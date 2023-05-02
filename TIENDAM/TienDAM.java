@@ -17,7 +17,7 @@ public class TienDAM {
     
     //Método para preguntar al usuario por los datos del nuevo articulo, que será utilizado en añadir articulos
     // de almacen.
-    public void newArticulo() {
+    public static void newArticulo() {
         Scanner tcl = new Scanner(System.in);
         System.out.println();
         System.out.println("Nuevo Articulo: ");
@@ -36,7 +36,7 @@ public class TienDAM {
         
     }
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         Scanner tcl = new Scanner(System.in);
         boolean salir = false;
         //Creamos bucle while para hacer el menu principal
@@ -70,7 +70,7 @@ public class TienDAM {
     }
 
     //Método almacen que funciona mediante un bucle while para mostrar y anotar por pantalla las opciones
-    public void almacen(Scanner tcl) {
+    public static void almacen(Scanner tcl) {
         boolean volver = false;
         while (!volver) {
             System.out.println("Menu de almacen");
@@ -126,7 +126,7 @@ public class TienDAM {
         }
     }
     //Método Pedido que funciona mediante un bucle while para mostrar y anotar por pantalla las opciones
-    public void pedido(Scanner tcl) {
+    public static void pedido(Scanner tcl) {
         boolean volver = false;
         while (!volver) {
             System.out.println("Menu de pedido");
