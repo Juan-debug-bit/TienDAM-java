@@ -1,12 +1,22 @@
 package TIENDAM;
 
 public class Articulo {
-    final String nombre;
+    String nombre;
     double precio;
-    final double iva;
     int cantidad;
 
-    public Articulo(String nombre, double precio, double iva, int cantidad) {
+    public enum tipoiva {
+        General, Reducido, Superreducido
+    }
+
+    public static tipoiva tipo;
+    private static double iva;
+
+    public Articulo(int indice){
+        indice++;
+    }
+    public Articulo(String nombre, double precio, double iva, int cantidad, int indice) {
+        this(indice);
         this.nombre = nombre;
         this.precio = precio;
         this.iva = iva;
@@ -29,6 +39,10 @@ public class Articulo {
         return iva;
     }
 
+    public void setIva(double iva) {
+        Articulo.iva = iva;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -37,28 +51,44 @@ public class Articulo {
         this.cantidad = cantidad;
     }
 
-    public void aumentar (int cantidad) {
-        for (int i = 0; i < Almacen.cantidad; i++) {
-            if ((i+1) == 1) {
-                cantidad = cantidad + cantidad;//Aqui tengo que solicitar la cantidad en TienDAM
-            }else{
+    public void aumentar(int cantidad) {
+        for (int i = 0; i < Almacen.indice; i++) {
+            if ((i + 1) == TienDAM.buscar()) {
+                cantidad++;
+            } else {
                 System.out.println("No hay ningún articulo con ese número");
             }
         }
     }
 
-    public void disminuir (int cantidad) {
-        for (int i = 0; i < Almacen.cantidad; i++) {
-            if ((i+1) == 1) {
-                cantidad = cantidad - cantidad;//Aqui tengo que solicitar la cantidad en TienDAM
+    public void disminuir(int cantidad) {
+        for (int i = 0; i < Almacen.indice; i++) {
+            if ((i + 1) == TienDAM.buscar()) {
+                cantidad--;
             } else {
-                
+
             }
         }
     }
+
     public String toString() {
-        return "Articulo [nombre= " + nombre + ", precio= " + precio + ", iva= " + iva + ", cantidad= " + cantidad + "]";
+        return "Articulo [nombre= " + nombre + ", precio= " + precio + ", cantidad= " + cantidad + "]";
     }
-    
+
+    public static void TipoIVA() {
+        String aux = "General";
+        switch (tipo) {
+            case Reducido:
+                aux = "Reducido";
+                break;
+            case Superreducido:
+                aux = "Superreducido";
+                break;
+            default:
+            System.out.println("Tipo de iva invalido");
+                break;
+        }
+        System.out.println("Tipo de iva: " + aux);
+    }
 
 }
