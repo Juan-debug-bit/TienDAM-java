@@ -1,7 +1,6 @@
 package TIENDAM;
 
 public class Almacen {
-
     private final int maxArticulos = 100;
     private Articulo[] articulos = new Articulo[maxArticulos];
     private int indice = 0;
@@ -17,18 +16,18 @@ public class Almacen {
     public void verArticulos() {
         // Bucle que recorre el array y lista los articulos
         for (int i = 0; i < indice; i++) {
-            System.out.println("Articulo nº " + (i + 1));
-            articulos[i].toString();
-
+            System.out.print("Articulo nº " + (i + 1) + ": ");
+            System.out.println(articulos[i].toString());
+            System.out.println();
         }
     }
 
-    public boolean buscar() {
+    // Recorrer el array y mostrar los artículos cuyo nombre contiene txt
+    public boolean buscar(String txt) {
         // Bucle que recorre el array y lista los articulos
         for (int i = 0; i < indice; i++) {
-            // Creamos if para mostrar el articulo que queremos ver y no listarlos
-            if ((i + 1) == TienDAM.buscar()) {
-                articulos[i].toString();
+            if (articulos[i].getNombre().toLowerCase().contains(txt.toLowerCase())) {
+                System.out.println(articulos[i].toString());
             }
         }
         return true;
@@ -42,33 +41,30 @@ public class Almacen {
         indice++;
     }
 
-    public boolean quitarArticulo(int indice) {
+    public boolean quitarArticulo(int buscar) {
         for (int i = 0; i < indice; i++) {
-            if ((i + 1) == TienDAM.buscar()) {
-                return true;
-            }
-            indice--;
-            articulos[indice] = articulos[indice + 1];
+            articulos[buscar] = articulos[buscar + 1];
         }
-        System.out.println("No hay un articulo con ese número");
-        return false;
+        return true;
     }
 
-    public boolean modificarPrecio(int cantidad, int precio) {
-        for (int i = 0; i < indice; i++) {
-            if ((i + 1) == TienDAM.buscar()) {
-                // Crear con Scanner una nueva variable para modificar el precio
-                // En TienDAM
-            }
-        }
-        return false;
+    public boolean modificarPrecio(int buscar, double precio) {
+        buscar -= 1;
+        articulos[buscar].setPrecio(precio);
+        return true;
     }
 
-    public boolean recibir(int cantidad, int precio) {
-        return false;
-    }
+    public boolean recibir(int buscar, int cantidad) {
+        buscar -= 1;
+        cantidad += articulos[buscar].getCantidad();
 
-    public boolean devolver(int cantidad, int precio) {
-        return false;
+        articulos[buscar].setCantidad(cantidad);
+        return true;
+    }
+    public boolean devolver(int buscar, int cantidad){
+        buscar -=1;
+        cantidad-=articulos[buscar].getCantidad();
+        articulos[buscar].setCantidad(cantidad);
+        return true;
     }
 }

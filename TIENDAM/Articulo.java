@@ -50,7 +50,7 @@ public class Articulo {
 
     public void aumentar(int cantidad) {
         for (int i = 0; i < almacen.getIndice(); i++) {
-            if ((i + 1) == TienDAM.buscar()) {
+            if ((i + 1) == 1) {
                 cantidad++;
             } else {
                 System.out.println("No hay ningún articulo con ese número");
@@ -60,16 +60,12 @@ public class Articulo {
 
     public void disminuir(int cantidad) {
         for (int i = 0; i < almacen.getIndice(); i++) {
-            if ((i + 1) == TienDAM.buscar()) {
+            if ((i + 1) == 1) {
                 cantidad--;
             } else {
 
             }
         }
-    }
-
-    public String toString() {
-        return "Articulo [nombre= " + nombre + ", precio= " + precio + ", cantidad= " + cantidad + "]";
     }
 
     public void tipoIVA() {
@@ -88,4 +84,8 @@ public class Articulo {
         System.out.println("Tipo de iva: " + aux);
     }
 
+    public String toString() {
+        return "Articulo [nombre=" + nombre + ", precio=" + precio + ", cantidad=" + cantidad
+                + ", tipo=" + tipo + ", iva=" + iva + "]";
+    }
 }
